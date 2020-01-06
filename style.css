@@ -68,6 +68,9 @@ body {
     margin: 0;
     margin-bottom: 10px;
 }
+.column-header.edit {
+    background-color: chartreuse;
+}
 
 .column-footer span {
     font-size: 14px;
@@ -109,11 +112,15 @@ body {
 }
 
 .note.dragged {
-	opacity: 0.01;
+	opacity: 0.3;
 }
 
 .column.dragged {
 	opacity: 0.4;
+}
+
+.note.edit {
+    background-color: chartreuse;
 }
 
 .action {
@@ -125,5 +132,6 @@ body {
 }
 
 .note.under {
-	opacity: 0.5;
+    opacity: 0.9;
+    background-color: #e3f2fd;
 }
