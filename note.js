@@ -3,7 +3,7 @@ const Note = {
     IdCounter: 8,
     dragged: null,
 
-    // ф-я для редактирования записей
+    // ф-я для работы записей
     process (noteElement) {
         noteElement.addEventListener('dblclick', function (event) {
         // добавляем элементу записи св-во редактирования, убираем возможность перетаскивания и подсвечиваем эту область
@@ -27,6 +27,7 @@ const Note = {
             }
         });
     
+        // слушаем перетаскивание
         noteElement.addEventListener('dragstart', Note.dragstart)
         noteElement.addEventListener('dragend', Note.dragend)
         noteElement.addEventListener('dragenter', Note.dragenter)
