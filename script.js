@@ -1,12 +1,17 @@
-// работаем с записями
+// работаем с колонками
 document
     .querySelectorAll('.column')
     .forEach (Column.process)
 
-    // работаем с записями
+// работаем с записями
+document
+    .querySelectorAll('.note')
+    .forEach(Note.process);
+
+    /*// работаем с записями
     document
         .querySelectorAll('.column')
-        .forEach (Column.process)
+        .forEach (Column.process)*/
     
     // работаем с колонками
     document
@@ -35,17 +40,3 @@ document
             
             columnElement.querySelector('.column-header').focus()
         });
-    
-    // делаем записи редактируемыми
-    document
-        .querySelectorAll('.note')
-        .forEach(Note.process);
-
-// делаем записи редактируемыми
-document
-    .querySelectorAll('.note')
-    .forEach(Note.process);
-
-document.querySelector('.columns').addEventListener('dragover', function (event) {
-    event.preventDefault()
-})
