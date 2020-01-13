@@ -65,15 +65,20 @@ const Column = {
     
         event.stopPropagation()
 
-        /*document
+        document
             .querySelectorAll('.note')
-            .forEach(noteElement => noteElement.removeAttribute('draggable'))*/
+            .forEach(noteElement => noteElement.removeAttribute('draggable'))
     },
     
     dragend (event) {
         this.classList.remove('dragged')
         Column.dragged = null
+        Column.dropped = null
     
+        document
+            .querySelectorAll('.note')
+            .forEach(noteElement => noteElement.setAttribute('draggable', true))
+
         document
             .querySelectorAll('.column')
             //.forEach(noteElement => noteElement.setAttribute('draggable', true))
@@ -91,14 +96,24 @@ const Column = {
     
     dragover (event) {
         event.preventDefault()
+        event.stopPropagation()
+
+        if (Column.dragged === this) {
+            if (Column.dropped) {
+                columnElement.dropped.classList.remove('under')
+            }
+            Column.dropped = null
+        }
+
         if (!Column.dragged || Column.dragged === this) {
             return
         }
         
         Column.dropped = this
+        // убираем класс при отведении
         document
             .querySelectorAll('.column')
-            .forEach(columnElement.classList.remove('under'))
+            .forEach(columnElement => columnElement.classList.remove('under'))
         
         this.classList.add('under')
     },
@@ -127,6 +142,11 @@ const Column = {
             else {
                 document.querySelector('.columns').insertBefore(Column.dragged, this.nextElementSibling)
             }
+
+            // убираем класс при отведении
+            document
+            .querySelectorAll('.column')
+            .forEach(columnElement => columnElement.classList.remove('under'))
         }
     }
 }
